@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block title %}<title>Biblioteca Virtual</title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Add additional CSS in static file -->
+    
+    {% load static %}
+    <!-- Sytles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body class="body">
+    <div class="container">
+        <aside class="row">
+            <nav class="col-12 nav nav-default">
+                <a class="nav-link nav-item" href="{% url 'index' %}">Pagina Principal</a>
+                <a class="nav-link nav-item" href="{% url 'books' %}">Libros</a>
+              </nav>
+        </aside>
+        <section class="row main-block">
+            <div class="col-10">
+                <div class="col-12 main-content">
+                    {% block content %}{% endblock %}
+                </div>
+                <!-- 
+                {% block sidebar %}
+                <ul class="sidebar-nav col-md-2">
+                    <li><a href="{% url 'index' %}">Pagina Principal</a></li>
+                    <li><a href="{% url 'books' %}">libros</a></li>                
+                </ul>
+                {% endblock %}
+                </div>
+                -->
+            </div>
+        </section>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fontawesome/fontawesome.min.js' %}"></script>
+</body>
+</html>

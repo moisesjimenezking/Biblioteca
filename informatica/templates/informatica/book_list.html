@@ -1,0 +1,58 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1 class="text-title">Lista de Libros de Informatica</h1>
+    <table class="table-content">
+    {% if book_list %}
+    {% load static %}
+            <thead class="table-head-content">
+                <th class="table-head-item-primary">
+                    Titulo
+                </th>
+                <th class="table-head-item">
+                    Generos
+                </th>
+                <th class="table-head-item">
+                    Autor
+                </th>
+                <th class="table-head-item">
+                    Acciones
+                </th>
+            </thead>
+            <tbody class="table-body-content">
+                {% for book in book_list %}
+                <tr class="table-body-column">
+                    <td class="table-body-item-primary">
+                        {{ book.title }}
+                    </td>
+                    <td class="table-body-item">
+                        {% for genre in book.genre.all %}
+                        {{ genre }}
+                        {% if not forloop.last %}
+                        Ninguno
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td class="table-body-item">
+                        {{ book.author }}
+                    </td>
+                    <td class="table-body-item">
+                        <a href="{% static 'store/' %}{{ book.isbn }}">
+                            Descargar
+                        </a>
+                        <a href="../book/{{ book.id }}">
+                            Detalles
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    {% else %}
+        <div>
+            <p class="text-content">
+                Actualmente no existen libros disponibles. Intente más tarde.
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}

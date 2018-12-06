@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div class="content-book">
+        <div class="row">
+            <div class="col-4">
+                <h1 class="text-title">Titulo del Libro </h1> {{ book.title }}
+            </div>
+            <div class="col-4">
+                <h2 class="text-title">Autor </h2>
+                    <span class="text-content">
+                        {{ book.author }}
+                    </span>                
+            </div>
+            <div class="col-4">
+                    <h2 class="text-title">Generos</h2>
+                    {% for genre in book.genre.all %}
+                        {{ genre }}
+                        {% if not forloop.last %},
+                        <div>
+                            <p>
+                                No existen generos asociados.
+                            </p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
